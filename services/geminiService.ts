@@ -2,26 +2,22 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const analyzeBleData = async (data: string): Promise<string> => {
+  // Pastikan API_KEY tersedia di environment
   const apiKey = (process.env as any).API_KEY;
-  if (!apiKey) return "API Key not configured. Please check your environment.";
+  if (!apiKey) return "API Key belum dikonfigurasi.";
 
   const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `You are an expert technical analyst for embedded systems. I have received this data from a Bluetooth device: "${data}". 
-      Can you briefly explain what this data might represent (e.g., sensor readings, status codes, or plain text)? 
-      Keep the explanation concise and professional.`,
-      config: {
-        temperature: 0.5,
-        maxOutputTokens: 300,
-      }
+      contents: `Analisis data Bluetooth berikut secara teknis: "${data}". Berikan penjelasan singkat tentang apa kemungkinan data ini.`,
     });
 
-    return response.text || "No interpretation available.";
+    // Menggunakan .text sesuai instruksi SDK terbaru
+    return response.text || "Tidak ada hasil analisis.";
   } catch (error) {
     console.error("AI Analysis error:", error);
-    return "Failed to analyze data via AI.";
+    return "Gagal menganalisis data.";
   }
 };
