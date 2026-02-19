@@ -1,0 +1,7 @@
+{
+  "name": "BluePulse Terminal",
+  "description": "Zero-config Web Bluetooth terminal with integrated Gemini AI for data analysis. Ready for GitHub Pages.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
