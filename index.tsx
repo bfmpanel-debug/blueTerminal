@@ -1,14 +1,3 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-}
+// This file is now redundant as bootstrapping logic moved to index.html 
+// to ensure Babel handles the module resolution correctly in a buildless environment.
